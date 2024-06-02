@@ -5,81 +5,76 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>選擇頁面</title>
     <style>
-      body {
-        font-family: Arial, sans-serif;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh; /* 使body的高度等於視窗的高度 */
-      }
-
-      .container {
-        background-color: #fff;
-        padding: 40px;
-        border-radius: 4px;
-        text-align: center;
-        width: 80%;
-        height: 100%;
-        max-width: 600px;
-      }
-      .hidden {
-        display: none;
-      }
-      h1 {
-      }
-      .logo {
-        display: flex;
-        width: 200px;
-        height: auto;
-        /* padding-left: 200px; */
-        margin-top: 100px;
-        margin-bottom: 50px; /* 調整為適合的值 */
-      }
-      .button,
-      .country-button {
-        display: inline-block;
-        padding: 10px 0px;
-        background-color: #cfcfcf;
-        color: white;
-        text-align: center;
-        border: none;
-        cursor: pointer;
-        border-radius: 4px;
-        width: 25%;
-      }
-      .button:hover,
-      .country-button:hover {
-        background-color: #8d8d8d;
-      }
-      .dropdown {
-        /* margin-bottom: 20px; */
-      }
-      .dropdown select {
-        padding: 10px;
-        width: 100%;
-        border: 1px solid #ccc;
-        border-radius: 4px;
-        background-color: #cfcfcf;
-      }
-      .results {
-        margin-top: 30px;
-      }
-      .result-item {
-        display: flex;
-        align-items: center;
-        margin-bottom: 20px;
-        border-bottom: 1px solid #ddd;
-        padding-bottom: 10px;
-      }
-      .result-item img {
-        width: 50px;
-        height: 50px;
-        margin-right: 10px;
-        border-radius: 4px;
-      }
-      .result-item div {
-        text-align: left;
-      }
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+	        height: 100vh; /* 使body的高度等於視窗的高度 */
+        }
+        .container {
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 4px;
+            text-align: center;
+            width: 80%;
+            height: 100%;
+            max-width: 600px;
+        }
+        .hidden {
+            display: none;
+        }
+        h1{}
+        .logo {
+            display: flex;
+            width: 200px;
+            height: auto;
+            padding-left: 200px;
+            margin-top: 50px;
+            margin-bottom: 50px; /* 調整為適合的值 */
+        }
+        .button, .country-button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #cfcfcf;
+            color: white;
+            text-align: center;
+            border: none;
+            cursor: pointer;
+            border-radius: 4px;
+            margin-top: 10px;
+        }
+        .button:hover, .country-button:hover {
+            background-color: #8d8d8d;
+        }
+        .dropdown {
+            margin-bottom: 20px;
+        }
+        .dropdown select {
+            padding: 10px;
+            width: 100%;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .results {
+            margin-top: 30px;
+        }
+        .result-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 10px;
+        }
+        .result-item img {
+            width: 50px;
+            height: 50px;
+            margin-right: 10px;
+            border-radius: 4px;
+        }
+        .result-item div {
+            text-align: left;
+        }
     </style>
   </head>
   <body>
