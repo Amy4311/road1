@@ -124,19 +124,29 @@
       </div>
     </div>
 
-    <div id="page3" class="container hidden">
-      <div
-        style="
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-        "
-      >
+   <div id="page3" class="container hidden">
         <h1 id="country-title">日本</h1>
-        <button style="font-size: larger" class="button" onclick="results">
-          Skip
-        </button>
-
+        <div class="dropdown">
+            <label for="city">城市:</label>
+            <select id="city">
+                <option value="">選擇類型</option>
+                <option value="東京">東京</option>
+                <option value="大阪">大阪</option>
+                <!-- 城市選項將由 JavaScript 動態生成 -->
+            </select>
+        </div>
+        <div class="dropdown">
+            <label for="type">類型:</label>
+            <select id="type">
+                <option value="">選擇類型</option>
+                <option value="市區">市區</option>
+                <option value="觀光">觀光</option>
+                <option value="鄉村">鄉村</option>
+            </select>
+        </div>
+        
+        <button style="font-size: larger;" class="button" onclick="search()">搜尋</button>
+        <div class="results" id="results">
         <div
           style="font-size: medium"
           class="country-button"
