@@ -133,26 +133,8 @@
         "
       >
         <h1 id="country-title">日本</h1>
-        <div class="dropdown">
-          <!-- <label for="city">城市:</label> -->
-          <select id="city">
-            <!-- <option value=""></option> -->
-            <option value="東京">東京</option>
-            <option value="大阪">大阪</option>
-            <!-- 城市選項將由 JavaScript 動態生成 -->
-          </select>
-        </div>
-        <div class="dropdown">
-          <!-- <label for="type">類型:</label> -->
-          <select id="type">
-            <option value="">類型</option>
-            <option value="歷史">歷史</option>
-            <option value="自然">自然</option>
-            <option value="休閒">休閒</option>
-          </select>
-        </div>
-        <button style="font-size: larger" class="button" onclick="search()">
-          搜尋
+        <button style="font-size: larger" class="button" onclick="results">
+          Skip
         </button>
 
         <div
@@ -230,88 +212,6 @@
         const type = document.getElementById("type").value;
         const results = document.getElementById("results");
         results.innerHTML = "";
-
-        // 模擬搜尋結果
-        const filteredData = [
-          {
-            city: "東京",
-            type: "歷史",
-            name: "東京鐵塔",
-            img: "https://via.placeholder.com/50",
-          },
-          {
-            city: "東京",
-            type: "歷史",
-            name: "淺草寺",
-            img: "https://via.placeholder.com/50",
-          },
-          {
-            city: "東京",
-            type: "自然",
-            name: "秋葉原",
-            img: "https://via.placeholder.com/50",
-          },
-          {
-            city: "東京",
-            type: "休閒",
-            name: "銀座",
-            img: "https://via.placeholder.com/50",
-          },
-          {
-            city: "東京",
-            type: "自然",
-            name: "新宿",
-            img: "https://via.placeholder.com/50",
-          },
-          {
-            city: "東京",
-            type: "自然",
-            name: "河口湖",
-            img: "https://via.placeholder.com/50",
-          },
-          {
-            city: "東京",
-            type: "休閒",
-            name: "澀谷",
-            img: "https://via.placeholder.com/50",
-          },
-          {
-            city: "大阪",
-            type: "休閒",
-            name: "環球影城",
-            img: "https://via.placeholder.com/50",
-          },
-          {
-            city: "大阪",
-            type: "自然",
-            name: "大阪城公園",
-            img: "https://via.placeholder.com/50",
-          },
-          {
-            city: "大阪",
-            type: "歷史",
-            name: "通天閣",
-            img: "https://via.placeholder.com/50",
-          },
-          {
-            city: "大阪",
-            type: "休閒",
-            name: "心齋橋",
-            img: "https://via.placeholder.com/50",
-          },
-          {
-            city: "大阪",
-            type: "歷史",
-            name: "鶴岡八幡宮",
-            img: "https://via.placeholder.com/50",
-          },
-          {
-            city: "大阪",
-            type: "自然",
-            name: "湘南海岸",
-            img: "https://via.placeholder.com/50",
-          },
-        ];
 
         filteredData.forEach((item) => {
           if (city == item.city && type == item.type) {
