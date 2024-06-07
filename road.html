@@ -103,6 +103,8 @@
       <h1 style="text-align: start">國家</h1>
       <div>
         <div class="country-button" onclick="selectCountry('日本')">日本</div>
+        <div class="btn-list">
+			<button>日本</button>
 			<button>韓國</button>
 			<button>泰國</button>
         </div>
@@ -111,15 +113,6 @@
 			<button>義大利</button>
 			<button>法國</button>
 		</div>
-
-    <div id="page3" class="container hidden">
-      <div
-        style="
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-        "
-      >
         <h1 id="country-title">日本</h1>
         <div class="dropdown">
           <!-- <label for="city">城市:</label> -->
@@ -135,33 +128,14 @@
           <select id="type">
             <option value="">類型</option>
             <option value="歷史">歷史</option>
+            <option value="自然">自然</option>
             <option value="休閒">休閒</option>
           </select>
         </div>
-        <button style="font-size: larger" class="button" onclick="goTopage4">
-          Skip
+        <button style="font-size: larger" class="button" onclick="search()">
+          搜尋
         </button>
-          </div>
-        <div id="page4" class="container hidden" style="text-align: start">
-        <h1>規劃路線：</h1>
-        <p>早上：</p>
-        <p>下午：</p>
-            <p>晚上：</p>
-        <div style="display: flex; justify-content: space-between">
-            <div style="text-align: center">
-                <img src="" alt="" style="height: 100px; width: 100px" />
-                <p>早上</p>
-            </div>
-            <div style="text-align: center">
-                <img src="" alt="" style="height: 100px; width: 100px" />
-                <p>下午</p>
-            </div>
-            <div style="text-align: center">
-                <img src="" alt="" style="height: 100px; width: 100px" />
-                <p>晚上</p>
-        </div>
-      </div>
-        
+
         <div
           style="font-size: medium"
           class="country-button"
@@ -254,7 +228,7 @@
           },
           {
             city: "東京",
-            type: "休閒",
+            type: "自然",
             name: "秋葉原",
             img: "https://via.placeholder.com/50",
           },
@@ -266,13 +240,13 @@
           },
           {
             city: "東京",
-            type: "休閒",
+            type: "自然",
             name: "新宿",
             img: "https://via.placeholder.com/50",
           },
           {
             city: "東京",
-            type: "休閒",
+            type: "自然",
             name: "河口湖",
             img: "https://via.placeholder.com/50",
           },
@@ -290,7 +264,7 @@
           },
           {
             city: "大阪",
-            type: "休閒",
+            type: "自然",
             name: "大阪城公園",
             img: "https://via.placeholder.com/50",
           },
@@ -314,7 +288,7 @@
           },
           {
             city: "大阪",
-            type: "休閒",
+            type: "自然",
             name: "湘南海岸",
             img: "https://via.placeholder.com/50",
           },
