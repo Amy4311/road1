@@ -103,16 +103,35 @@
       <h1 style="text-align: start">國家</h1>
       <div>
         <div class="country-button" onclick="selectCountry('日本')">日本</div>
-        <div class="btn-list">
-			<button>日本</button>
-			<button>韓國</button>
-			<button>泰國</button>
+        <div
+          class="country-button"
+          onclick="selectCountry('韓國')"
+          style="margin: 25px 40px"
+        >
+          韓國
         </div>
-        <div class="btn-list">
-			<button>美國</button>
-			<button>義大利</button>
-			<button>法國</button>
-		</div>
+        <div class="country-button" onclick="selectCountry('泰國')">泰國</div>
+        <br />
+        <div class="country-button" onclick="selectCountry('美國')">美國</div>
+        <div
+          class="country-button"
+          onclick="selectCountry('義大利')"
+          style="margin: 25px 40px"
+        >
+          義大利
+        </div>
+        <div class="country-button" onclick="selectCountry('法國')">法國</div>
+      </div>
+    </div>
+
+    <div id="page3" class="container hidden">
+      <div
+        style="
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+        "
+      >
         <h1 id="country-title">日本</h1>
         <div class="dropdown">
           <!-- <label for="city">城市:</label> -->
