@@ -10,7 +10,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        height: 100vh; 
+        height: 100vh; /* 使body的高度等於視窗的高度 */
         background-color: #E9D3BB;
       }
 
@@ -34,11 +34,7 @@
         height: auto;
         /* padding-left: 200px; */
         margin-top: 100px;
-        margin-bottom: 50px;
-      }
-      .buttonsContainer {
-        display: flex;
-        justify-content: space-between;
+        margin-bottom: 50px; /* 調整為適合的值 */
       }
       .button,
       .country-button {
@@ -72,14 +68,14 @@
       .result-item {
         display: flex;
         align-items: center;
-        margin-bottom: 30px;
+        margin-bottom: 20px;
         border-bottom: 1px solid #ddd;
-        padding-bottom: 30px;
+        padding-bottom: 10px;
       }
       .result-item img {
         width: 50px;
         height: 50px;
-        margin-right: 30px;
+        margin-right: 10px;
         border-radius: 4px;
       }
       .result-item div {
@@ -104,94 +100,91 @@
       </div>
     </div>
 
-    <div id="page2" class="container hidden" style="height: 330px;">
-      <h1 style="text-align: start; margin-bottom: 85px;">國家</h1>
-      <div class="buttonsContainer">
+    <div id="page2" class="container hidden">
+      <h1 style="text-align: start">國家</h1>
+      <div>
         <div class="country-button" onclick="selectCountry('日本')">日本</div>
-        <div class="country-button" onclick="selectCountry('韓國')">韓國</div>
-        <div class="country-button" onclick="selectCountry('泰國')">泰國</div>
-      </div>
-      <div class="buttonsContainer" style="margin-top: 75px;">
-        <div class="country-button" onclick="selectCountry('美國')">美國</div>
-        <div class="country-button" onclick="selectCountry('義大利')">義大利</div>
-        <div class="country-button" onclick="selectCountry('法國')">法國</div>
+        <div
+          class="country-button"
+          style="margin: 25px 40px"
+        >
+          韓國
+        </div>
+        <div class="country-button">泰國</div>
+        <br />
+        <div class="country-button">美國</div>
+        <div
+          class="country-button"
+          
+          style="margin: 25px 40px"
+        >
+          義大利
+        </div>
+        <div class="country-button">法國</div>
       </div>
     </div>
 
-    <div id="page3" class="container hidden" style="max-width: 600px; padding-top: 200px;">
+    <div id="page3" class="container hidden">
       <div
         style="
           display: flex;
           align-items: center;
+          justify-content: space-between;
         "
       >
         <h1 id="country-title">日本</h1>
-        <div style="display: flex; margin-left: 80px; column-gap: 50px;">
-          <div class="dropdown">
-            <!-- <label for="city">城市:</label> -->
-            <select id="city">
-              <!-- <option value=""></option> -->
-              <option value="東京">東京</option>
-              <option value="大阪">大阪</option>
-              <!-- 城市選項將由 JavaScript 動態生成 -->
-            </select>
-          </div>
-          <div class="dropdown">
-            <!-- <label for="type">類型:</label> -->
-            <select id="type">
-              <option value="">類型</option>
-              <option value="歷史">歷史</option>
-              <option value="自然">自然</option>
-              <option value="休閒">休閒</option>
-            </select>
-          </div>
+        <div class="dropdown">
+          <!-- <label for="city">城市:</label> -->
+          <select id="city">
+            <!-- <option value=""></option> -->
+            <option value="東京">東京</option>
+            <option value="大阪">大阪</option>
+            <!-- 城市選項將由 JavaScript 動態生成 -->
+          </select>
         </div>
-        <div style="display: flex; margin-left: 80px; margin-left: auto; margin-right: 50px; column-gap: 50px;">
-          <button style="font-size: larger; width: 150px; background-color: #cfcfcf; color: black; width: 50px; height:39px; font-size: 13px;" class="button" onclick="search()">
-            搜尋
-          </button>
-  
-          <button
-            style="font-size: medium; width: 150px; background-color: #cfcfcf; color: black; width: 50px; height:39px; font-size: 13px;"
-            class="country-button"
-            onclick="previousPage()"
-          >
-            上一頁
-          </button>
+        <div class="dropdown">
+          <!-- <label for="type">類型:</label> -->
+          <select id="type">
+            <option value="">類型</option>
+            <option value="歷史">歷史</option>
+            <option value="自然">自然</option>
+            <option value="休閒">休閒</option>
+          </select>
+        </div>
+        <button style="font-size: larger" class="button" onclick="search()">
+          搜尋
+        </button>
+
+        <div
+          style="font-size: medium"
+          class="country-button"
+          onclick="previousPage()"
+        >
+          上一頁
         </div>
       </div>
       <div class="results" id="results"></div>
       <!-- 搜尋結果將顯示在這裡 -->
     </div>
-    <div id="page4" class="container hidden" style="text-align: start; padding-top: 200px;">
+    <div id="page4" class="container hidden" style="text-align: start">
       <h1>規劃路線：</h1>
-      <h3 id="locationTitle"></h3>
-      <p id="morningText">早上：</p>
-      <p id="afternoonText">下午：</p>
-      <p id="nightText">晚上：</p>
+        <p>早上：<div id="morningText"></div></p>
+      <p>下午：<div id="afternoonText"></div></p>
+      <p>晚上：<div id="nightText"></div></p>
       <div style="display: flex; justify-content: space-between">
         <div style="text-align: center">
-          <img id="morningImg" src=" " alt=" " style="height: 100px" />
+          <img src=" " alt=" " style="height: 100px" />
           <p>早上</p>
         </div>
         <div style="text-align: center">
-          <img id="afternoonImg" src=" " alt=" " style="height: 100px" />
+          <img src=" " alt=" " style="height: 100px" />
           <p>下午</p>
         </div>
         <div style="text-align: center">
-          <img id="nightImg" src=" " alt=" " style="height: 100px" />
+          <img src=" " alt=" " style="height: 100px" />
           <p>晚上</p><br>
         </div>
       </div>
-      <h1>移動建議：</h1>
-      <p id="morningMovingText"></p>
-      <p id="morningMovingContent"></p>
-      <p id="afternoonMovingText"></p>
-      <p id="afternoonMovingContent"></p>
-      <p id="nightMovingText"></p>
-      <p id="nightMovingContent"></p>
-      <h1 id="tipTitle"></h1>
-      <p id="tipText"></p>
     </div>
 
     <script>
@@ -257,16 +250,15 @@
             afternoon_text_3: "可搭乘都營大江戶線至赤羽橋站或日比谷線至神谷町站前往",
             night_text_2: "晚上：銀座",
             night_text_3: "可搭乘有樂町線銀座一丁目站或日比谷線銀座前往",
-            tip_text: "東京鐵塔其實是用二手材料建造的。鐵塔的結構中使用了大約33,000噸的鋼鐵，其中很多是來自美軍在朝鮮戰爭期間使用的廢舊鋼材。這些鋼材經過加工和再利用，成為了東京鐵塔的組成部分。這個環保的舉措不僅減少了成本，也為廢舊材料找到了新的用途。"
           },
           {
             city: "東京",
             type: "歷史",
             name: "淺草寺",
             img: "淺草寺.jpg",
-            morning_text_1: "淺草寺，東京最著名、最古老的寺廟，周圍有雷門、五重塔等古蹟，還可以逛仲見世商店街，寺內可以求籤。",
-            afternoon_text: "新宿，這個區域有許多知名的地標和景點，包括新宿御苑，這是一個美麗的皇家花園，供人們休閒散步和欣賞自然美景。此外，新宿還擁有歌舞伎町，這是東京最著名的娛樂區之一，擁有眾多的酒吧、夜店、劇場和娛樂場所，為遊客提供了豐富多彩的夜生活體驗。",
-            night_text: "澀谷，被視為代表東京之時尚潮流基地，洋溢著懷舊氛圍的景觀還會在不經意間映入眼簾，澀谷的觀光景點不僅限於地面，可以前往——「澀谷SKY」可以俯瞰整個東京市景。",
+            morning_text_1: "早上：淺草寺，東京最著名、最古老的寺廟，周圍有雷門、五重塔等古蹟，還可以逛仲見世商店街，寺內可以求籤。",
+            afternoon_text: "下午：新宿，這個區域有許多知名的地標和景點，包括新宿御苑，這是一個美麗的皇家花園，供人們休閒散步和欣賞自然美景。此外，新宿還擁有歌舞伎町，這是東京最著名的娛樂區之一，擁有眾多的酒吧、夜店、劇場和娛樂場所，為遊客提供了豐富多彩的夜生活體驗。",
+            night_text: "晚上：澀谷，被視為代表東京之時尚潮流基地，洋溢著懷舊氛圍的景觀還會在不經意間映入眼簾，澀谷的觀光景點不僅限於地面，可以前往——「澀谷SKY」可以俯瞰整個東京市景。",
             morning_img: "淺草寺.jpg",
             afternoon_img: "新宿女僕.jpeg",
             night_img: "澀谷.jpeg", 
@@ -276,16 +268,15 @@
             afternoon_text_3: "可搭乘都營新宿線前往",
             night_text_2: "晚上：澀谷",
             night_text_3: "可搭乘JR山手線前往",
-            tip_text:"淺草寺的“雷門”（Kaminarimon）大燈籠其實是幾經重建的。現在大家所看到的雷門是1960年由松下電器創辦人松下幸之助捐贈重建的。這座燈籠高約3.9米，直徑約3.3米，重約700公斤，每年都會進行定期維護。"
           },
           {
             city: "東京",
             type: "休閒",
             name: "秋葉原",
             img: "秋葉原.jpeg",
-            morning_text_1: "湘南海岸，在江之島海岸線，漫步感受湘南海岸的風情，再到達鐮倉高校前，拍一組《灌籃高手》同款，再體驗乘坐江之電（連接藤澤至鐮倉的路面電車行經路線含括了鐮倉大部分的著名景點）。",
-            afternoon_text: "鶴岡八幡宮，日本三大八幡宮之一，這裡也以欣賞自然美景著稱，出宮門的小町街道路兩側分布著鱗次櫛比的店鋪。",
-            night_text: "秋葉原，動漫愛好者的天堂，也是買電器的好地方，還有女僕咖啡這樣的日本特色。",
+            morning_text_1: "早上：湘南海岸，在江之島海岸線，漫步感受湘南海岸的風情，再到達鐮倉高校前，拍一組《灌籃高手》同款，再體驗乘坐江之電（連接藤澤至鐮倉的路面電車行經路線含括了鐮倉大部分的著名景點）。",
+            afternoon_text: "下午：鶴岡八幡宮，日本三大八幡宮之一，這裡也以欣賞自然美景著稱，出宮門的小町街道路兩側分布著鱗次櫛比的店鋪。",
+            night_text: "晚上：晚上： 秋葉原，動漫愛好者的天堂，也是買電器的好地方，還有女僕咖啡這樣的日本特色。",
             morning_img: "湘南海岸.jpg",
             afternoon_img: "鶴岡八幡宮.jpg",
             night_img: "秋葉原.jpeg", 
@@ -295,7 +286,6 @@
             afternoon_text_3: "可搭乘JR橫須賀線步行前往",
             night_text_2: "晚上： 秋葉原",
             night_text_3: "可搭乘JR橫須賀線前往",
-            tip_text:"秋葉原原本是一個以電子產品聞名的地區，但它的名字實際上來自於火災。秋葉原在1870年代初期曾經發生過大火，導致大量的木製房屋被燒毀。為了防止再度發生火災，當地建造了一座供奉火災之神“秋葉大神”的神社，以祈求保護。"
           },
           {
             city: "東京",
@@ -314,16 +304,15 @@
             afternoon_text_3: "可搭乘都營大江戶線至赤羽橋站或日比谷線至神谷町站前往",
             night_text_2: "晚上：銀座",
             night_text_3: "可搭乘有樂町線銀座一丁目站或日比谷線銀座前往",
-            tip_text: "銀座最初在江戶時代是一個鑄幣廠所在地。銀座這個名字來源於日本的“銀座役所”，這是一個專門負責鑄造銀幣的機構。從1612年到1800年代中期，這裡是日本鑄造和發行銀幣的主要場所。隨著時代的變遷，這個地區從一個金融中心轉變成為一個充滿奢華和時尚的購物區。"
           },
           {
             city: "東京",
             type: "休閒",
             name: "新宿",
             img: "新宿女僕.jpeg",
-            morning_text_1: "淺草寺，東京最著名、最古老的寺廟，周圍有雷門、五重塔等古蹟，還可以逛仲見世商店街，寺內可以求籤。",
-            afternoon_text: "新宿，這個區域有許多知名的地標和景點，包括新宿御苑，這是一個美麗的皇家花園，供人們休閒散步和欣賞自然美景。此外，新宿還擁有歌舞伎町，這是東京最著名的娛樂區之一，擁有眾多的酒吧、夜店、劇場和娛樂場所，為遊客提供了豐富多彩的夜生活體驗。",
-            night_text: "澀谷，被視為代表東京之時尚潮流基地，洋溢著懷舊氛圍的景觀還會在不經意間映入眼簾，澀谷的觀光景點不僅限於地面，可以前往——「澀谷SKY」可以俯瞰整個東京市景。",
+            morning_text_1: "早上：淺草寺，東京最著名、最古老的寺廟，周圍有雷門、五重塔等古蹟，還可以逛仲見世商店街，寺內可以求籤。",
+            afternoon_text: "下午：新宿，這個區域有許多知名的地標和景點，包括新宿御苑，這是一個美麗的皇家花園，供人們休閒散步和欣賞自然美景。此外，新宿還擁有歌舞伎町，這是東京最著名的娛樂區之一，擁有眾多的酒吧、夜店、劇場和娛樂場所，為遊客提供了豐富多彩的夜生活體驗。",
+            night_text: "晚上：澀谷，被視為代表東京之時尚潮流基地，洋溢著懷舊氛圍的景觀還會在不經意間映入眼簾，澀谷的觀光景點不僅限於地面，可以前往——「澀谷SKY」可以俯瞰整個東京市景。",
             morning_img: "淺草寺.jpg",
             afternoon_img: "新宿女僕.jpeg",
             night_img: "澀谷.jpeg", 
@@ -333,26 +322,6 @@
             afternoon_text_3: "可搭乘都營新宿線前往",
             night_text_2: "晚上：澀谷",
             night_text_3: "可搭乘JR山手線前往",
-            tip_text: "新宿是東京的繁華商業區和交通樞紐，但在不久的過去，它曾經是一片樹木繁茂的沼澤地帶。在江戶時代早期，新宿的地區被稱為“牛込”，這裡是一片廣大的湿地和稻田，用來供應江戶城的穀物。"
-          },
-          {
-            city: "東京",
-            type: "休閒",
-            name: "澀谷",
-            img: "澀谷.jpeg",
-            morning_text_1: "淺草寺，東京最著名、最古老的寺廟，周圍有雷門、五重塔等古蹟，還可以逛仲見世商店街，寺內可以求籤。",
-            afternoon_text: "新宿，這個區域有許多知名的地標和景點，包括新宿御苑，這是一個美麗的皇家花園，供人們休閒散步和欣賞自然美景。此外，新宿還擁有歌舞伎町，這是東京最著名的娛樂區之一，擁有眾多的酒吧、夜店、劇場和娛樂場所，為遊客提供了豐富多彩的夜生活體驗。",
-            night_text: "澀谷，被視為代表東京之時尚潮流基地，洋溢著懷舊氛圍的景觀還會在不經意間映入眼簾，澀谷的觀光景點不僅限於地面，可以前往——「澀谷SKY」可以俯瞰整個東京市景。",
-            morning_img: "淺草寺.jpg",
-            afternoon_img: "新宿女僕.jpeg",
-            night_img: "澀谷.jpeg", 
-            morning_text_2: "早上：淺草寺",
-            morning_text_3: "可搭乘東京Metro銀座線前往",
-            afternoon_text_2: "下午：新宿",
-            afternoon_text_3: "可搭乘都營新宿線前往",
-            night_text_2: "晚上：澀谷",
-            night_text_3: "可搭乘JR山手線前往",
-            tip_text: "澀谷被視為東京的時尚潮流樞紐和年輕人聚集地，但在二戰之前，澀谷是一個相對寧靜的農村地區。當時的澀谷以農田和草木茂盛的山丘為主，是東京市中心的一個郊區。"
           },
           {
             city: "東京",
@@ -371,7 +340,6 @@
             afternoon_text_3: "可搭乘JR橫須賀線步行前往",
             night_text_2: "晚上： 秋葉原",
             night_text_3: "可搭乘JR橫須賀線前往",
-            tip_text:"湘南海岸不僅以其美麗的沙灘和海景聞名，還是日本流行文化的一個重要據點。特別是在日本漫畫和動畫的影響下，湘南海岸成為了許多作品的取景地和靈感來源，例如著名的漫畫《灌籃高手》就以鎌倉和湘南海岸為背景。"
           },
           {
             city: "東京",
@@ -390,13 +358,30 @@
             afternoon_text_3: "可搭乘都營大江戶線至赤羽橋站或日比谷線至神谷町站前往",
             night_text_2: "晚上：銀座",
             night_text_3: "可搭乘有樂町線銀座一丁目站或日比谷線銀座前往",
-            tip_text: '上野公園是東京市內最大的公園之一，擁有豐富的自然景觀和文化設施。但是，在第二次世界大戰期間，上野公園曾經被用作農業生產的場地。這是因為當時的日本政府為了確保城市居民的糧食供應，在城市內的一些公園和空地上進行了農耕和農產品種植，上野公園就是其中之一。'
+          },
+          {
+            city: "東京",
+            type: "休閒",
+            name: "澀谷",
+            img: "澀谷.jpeg",
+            morning_text_1: "早上：淺草寺，東京最著名、最古老的寺廟，周圍有雷門、五重塔等古蹟，還可以逛仲見世商店街，寺內可以求籤。",
+            afternoon_text: "下午：新宿，這個區域有許多知名的地標和景點，包括新宿御苑，這是一個美麗的皇家花園，供人們休閒散步和欣賞自然美景。此外，新宿還擁有歌舞伎町，這是東京最著名的娛樂區之一，擁有眾多的酒吧、夜店、劇場和娛樂場所，為遊客提供了豐富多彩的夜生活體驗。",
+            night_text: "晚上：澀谷，被視為代表東京之時尚潮流基地，洋溢著懷舊氛圍的景觀還會在不經意間映入眼簾，澀谷的觀光景點不僅限於地面，可以前往——「澀谷SKY」可以俯瞰整個東京市景。",
+            morning_img: "淺草寺.jpg",
+            afternoon_img: "新宿女僕.jpeg",
+            night_img: "澀谷.jpeg", 
+            morning_text_2: "早上：淺草寺",
+            morning_text_3: "可搭乘東京Metro銀座線前往",
+            afternoon_text_2: "下午：新宿",
+            afternoon_text_3: "可搭乘都營新宿線前往",
+            night_text_2: "晚上：澀谷",
+            night_text_3: "可搭乘JR山手線前往",
           },
           {
             city: "大阪",
-            type: "自然",
-            name: "湘南海岸",
-            img: "湘南海岸.jpg",
+            type: "休閒",
+            name: "環球影城",
+            img: "大阪環球影城.jpg",
           },
           {
             city: "大阪",
@@ -407,20 +392,8 @@
           {
             city: "大阪",
             type: "歷史",
-            name: "鶴岡八幡宮",
-            img: "鶴岡八幡宮.jpg",
-          },
-          {
-            city: "大阪",
-            type: "歷史",
             name: "通天閣",
             img: "通天閣.jpg",
-          },
-          {
-            city: "大阪",
-            type: "休閒",
-            name: "環球影城",
-            img: "大阪環球影城.jpg",
           },
           {
             city: "大阪",
@@ -429,6 +402,18 @@
             img: "心齋橋.jpeg",
           },
           {
+            city: "大阪",
+            type: "歷史",
+            name: "鶴岡八幡宮",
+            img: "鶴岡八幡宮.jpg",
+          },
+          {
+            city: "大阪",
+            type: "自然",
+            name: "湘南海岸",
+            img: "湘南海岸.jpg",
+          },
+         {
             city: "大阪",
             type: "休閒",
             name: "大阪海洋館",
@@ -440,26 +425,11 @@
           if (city == item.city && type == item.type) {
             const div = document.createElement("div");
             div.className = "result-item";
-            div.innerHTML = `<img src="${item.img}" alt="${item.name}"><div>${item.name}<br>${item.city} #${item.type}</div>`;
+            div.innerHTML = `<img src="${item.img}" alt="${item.name}"><div>${item.name}<br>(${item.city}) (${item.type})</div>`;
             results.appendChild(div);
             div.onclick = () => {
               document.getElementById("page3").classList.add("hidden");
               document.getElementById("page4").classList.remove("hidden");
-              document.getElementById("morningText").textContent +=  item.morning_text_1;
-              document.getElementById("afternoonText").textContent +=  item.afternoon_text;
-              document.getElementById("nightText").textContent +=  item.night_text;
-              document.getElementById("morningImg").setAttribute("src", item.morning_img);
-              document.getElementById("afternoonImg").setAttribute("src", item.afternoon_img);
-              document.getElementById("nightImg").setAttribute("src", item.night_img);
-              document.getElementById("morningMovingText").textContent+=  item.morning_text_2;
-              document.getElementById("morningMovingContent").textContent+=  item.morning_text_3;
-              document.getElementById("afternoonMovingText").textContent+=  item.afternoon_text_2;
-              document.getElementById("afternoonMovingContent").textContent+=  item.afternoon_text_3;
-              document.getElementById("nightMovingText").textContent+=  item.night_text_2;
-              document.getElementById("nightMovingContent").textContent+=  item.night_text_3;
-              document.getElementById("locationTitle").textContent+=  `${item.city} 美食指南`;
-              document.getElementById("tipTitle").textContent+=  `${item.city} 冷知識`;
-              document.getElementById("tipText").textContent+=  item.tip_text;
             };
           }
         });
