@@ -111,17 +111,17 @@
         >
           韓國
         </div>
-        <div class="country-button">泰國</div>
+        <div class="country-button" onclick="selectCountry('泰國')">泰國</div>
         <br />
-        <div class="country-button">美國</div>
+        <div class="country-button" onclick="selectCountry('美國')">美國</div>
         <div
           class="country-button"
-          
+          onclick="selectCountry('義大利')"
           style="margin: 25px 40px"
         >
           義大利
         </div>
-        <div class="country-button">法國</div>
+        <div class="country-button" onclick="selectCountry('法國')">法國</div>
       </div>
     </div>
 
@@ -167,26 +167,28 @@
       <div class="results" id="results"></div>
       <!-- 搜尋結果將顯示在這裡 -->
     </div>
+    <!--// TODO -->
     <div id="page4" class="container hidden" style="text-align: start">
       <h1>規劃路線：</h1>
-        <p>早上：<div id="morningText"></div></p>
-      <p>下午：<div id="afternoonText"></div></p>
-      <p>晚上：<div id="nightText"></div></p>
+      <p>早上：<span id="morningText"><a href="morningText.txt">無資料</a></span></p>
+      <p>下午：<span id="afternoonText">無資料</span></p>
+      <p>晚上：<span id="nightText">無資料</span></p>
       <div style="display: flex; justify-content: space-between">
         <div style="text-align: center">
-          <img src=" " alt=" " style="height: 100px" />
+          <img id="morningImg" src="${item.img}" alt="${item.} " style="height: 100px" />
           <p>早上</p>
         </div>
         <div style="text-align: center">
-          <img src=" " alt=" " style="height: 100px" />
+          <img id="afternoonImg" src="${item.img}" alt=" ${item.name}" style="height: 100px" />
           <p>下午</p>
         </div>
         <div style="text-align: center">
-          <img src=" " alt=" " style="height: 100px" />
-          <p>晚上</p><br>
+          <img id="nightImg" src="${item.img}" alt=" ${item.name}" style="height: 100px" />
+          <p>晚上</p>
         </div>
       </div>
     </div>
+    
 
     <script>
       const countryData = {
@@ -226,6 +228,24 @@
         });
       }
 
+      function updatePage4(item) {
+        document.getElementById("morningText").innerHTML = item.morning_text || "無資料";
+        document.getElementById("afternoonText").innerHTML = item.afternoon_text || "無資料";
+        document.getElementById("nightText").innerHTML = item.night_text || "無資料";
+      
+        const morningImg = document.getElementById("morningImg");
+        const afternoonImg = document.getElementById("afternoonImg");
+        const nightImg = document.getElementById("nightImg");
+      
+        morningImg.src = item.morning_img || "";
+        morningImg.alt = item.morning_text || "無資料";
+        afternoonImg.src = item.afternoon_img || "";
+        afternoonImg.alt = item.afternoon_text || "無資料";
+        nightImg.src = item.night_img || "";
+        nightImg.alt = item.night_text || "無資料";
+      }
+      
+
       function search() {
         const city = document.getElementById("city").value;
         const type = document.getElementById("type").value;
@@ -233,12 +253,19 @@
         results.innerHTML = "";
 
         // 模擬搜尋結果
+        // TODO
         const filteredData = [
           {
             city: "東京",
             type: "歷史",
             name: "東京鐵塔",
             img: "東京鐵塔.jpg",
+            morning_img: "上野公園.jpg", // 添加 morning_img 属性
+            morning_text: "早上",
+            afternoon_img:"東京鐵塔.jpg",
+            afternoon_text:"中午",
+            night_img:"銀座.jpeg",
+            night_text:"晚上",
             morning_text_1: "上野公園。保留了江戶時代以來的日本園林風情，很有日本味道和文化內涵的公園，著名賞櫻地。",
             afternoon_text: "東京鐵塔。日本的地標建築，站在塔頂可以俯瞰東京全市，夜景更是迷人。",
             night_text: "銀座。遍布著高檔的購物中心，各種品牌和餐廳，也是文化藝術的據點，擁有豐富的劇院、畫廊和音樂廳。",
@@ -257,126 +284,54 @@
             type: "歷史",
             name: "淺草寺",
             img: "淺草寺.jpg",
-            morning_text_1: "早上：淺草寺，東京最著名、最古老的寺廟，周圍有雷門、五重塔等古蹟，還可以逛仲見世商店街，寺內可以求籤。",
-            afternoon_text: "下午：新宿，這個區域有許多知名的地標和景點，包括新宿御苑，這是一個美麗的皇家花園，供人們休閒散步和欣賞自然美景。此外，新宿還擁有歌舞伎町，這是東京最著名的娛樂區之一，擁有眾多的酒吧、夜店、劇場和娛樂場所，為遊客提供了豐富多彩的夜生活體驗。",
-            night_text: "晚上：澀谷，被視為代表東京之時尚潮流基地，洋溢著懷舊氛圍的景觀還會在不經意間映入眼簾，澀谷的觀光景點不僅限於地面，可以前往——「澀谷SKY」可以俯瞰整個東京市景。",
-            morning_img: "淺草寺.jpg",
-            afternoon_img: "新宿女僕.jpeg",
-            night_img: "澀谷.jpeg", 
-            morning_text_2: "早上：淺草寺",
-            morning_text_3: "可搭乘東京Metro銀座線前往",
-            afternoon_text_2: "下午：新宿",
-            afternoon_text_3: "可搭乘都營新宿線前往",
-            night_text_2: "晚上：澀谷",
-            night_text_3: "可搭乘JR山手線前往",
           },
           {
             city: "東京",
-            type: "休閒",
+            type: "自然",
             name: "秋葉原",
-            img: "秋葉原.jpeg",
-            morning_text_1: "早上：湘南海岸，在江之島海岸線，漫步感受湘南海岸的風情，再到達鐮倉高校前，拍一組《灌籃高手》同款，再體驗乘坐江之電（連接藤澤至鐮倉的路面電車行經路線含括了鐮倉大部分的著名景點）。",
-            afternoon_text: "下午：鶴岡八幡宮，日本三大八幡宮之一，這裡也以欣賞自然美景著稱，出宮門的小町街道路兩側分布著鱗次櫛比的店鋪。",
-            night_text: "晚上：晚上： 秋葉原，動漫愛好者的天堂，也是買電器的好地方，還有女僕咖啡這樣的日本特色。",
-            morning_img: "湘南海岸.jpg",
-            afternoon_img: "鶴岡八幡宮.jpg",
-            night_img: "秋葉原.jpeg", 
-            morning_text_2: "早上：湘南海岸",
-            morning_text_3: "可在搭乘JR橫須賀線前往",
-            afternoon_text_2: "下午：鶴岡八幡宮",
-            afternoon_text_3: "可搭乘JR橫須賀線步行前往",
-            night_text_2: "晚上： 秋葉原",
-            night_text_3: "可搭乘JR橫須賀線前往",
+            img: "秋葉原.jpg",
           },
           {
             city: "東京",
             type: "休閒",
             name: "銀座",
             img: "銀座.jpeg",
-            morning_text_1: "上野公園。保留了江戶時代以來的日本園林風情，很有日本味道和文化內涵的公園，著名賞櫻地。",
-            afternoon_text: "東京鐵塔。日本的地標建築，站在塔頂可以俯瞰東京全市，夜景更是迷人。",
-            night_text: "銀座。遍布著高檔的購物中心，各種品牌和餐廳，也是文化藝術的據點，擁有豐富的劇院、畫廊和音樂廳。",
-            morning_img: "上野公園.jpg",
-            afternoon_img: "東京鐵塔.jpg",
-            night_img: "銀座.jpeg", 
-            morning_text_2: "早上：上野公園",
-            morning_text_3: "可搭乘銀座線與日比谷線的上野站或 JR 山手線的鶯谷前往",
-            afternoon_text_2: "下午：東京鐵塔",
-            afternoon_text_3: "可搭乘都營大江戶線至赤羽橋站或日比谷線至神谷町站前往",
-            night_text_2: "晚上：銀座",
-            night_text_3: "可搭乘有樂町線銀座一丁目站或日比谷線銀座前往",
           },
           {
             city: "東京",
             type: "休閒",
             name: "新宿",
             img: "新宿女僕.jpeg",
-            morning_text_1: "早上：淺草寺，東京最著名、最古老的寺廟，周圍有雷門、五重塔等古蹟，還可以逛仲見世商店街，寺內可以求籤。",
-            afternoon_text: "下午：新宿，這個區域有許多知名的地標和景點，包括新宿御苑，這是一個美麗的皇家花園，供人們休閒散步和欣賞自然美景。此外，新宿還擁有歌舞伎町，這是東京最著名的娛樂區之一，擁有眾多的酒吧、夜店、劇場和娛樂場所，為遊客提供了豐富多彩的夜生活體驗。",
-            night_text: "晚上：澀谷，被視為代表東京之時尚潮流基地，洋溢著懷舊氛圍的景觀還會在不經意間映入眼簾，澀谷的觀光景點不僅限於地面，可以前往——「澀谷SKY」可以俯瞰整個東京市景。",
-            morning_img: "淺草寺.jpg",
-            afternoon_img: "新宿女僕.jpeg",
-            night_img: "澀谷.jpeg", 
-            morning_text_2: "早上：淺草寺",
-            morning_text_3: "可搭乘東京Metro銀座線前往",
-            afternoon_text_2: "下午：新宿",
-            afternoon_text_3: "可搭乘都營新宿線前往",
-            night_text_2: "晚上：澀谷",
-            night_text_3: "可搭乘JR山手線前往",
           },
           {
             city: "東京",
             type: "自然",
-            name: "湘南海岸",
-            img: "湘南海岸.jpg",
-            morning_text_1: "早上：湘南海岸，在江之島海岸線，漫步感受湘南海岸的風情，再到達鐮倉高校前，拍一組《灌籃高手》同款，再體驗乘坐江之電（連接藤澤至鐮倉的路面電車行經路線含括了鐮倉大部分的著名景點）。",
-            afternoon_text: "下午：鶴岡八幡宮，日本三大八幡宮之一，這裡也以欣賞自然美景著稱，出宮門的小町街道路兩側分布著鱗次櫛比的店鋪。",
-            night_text: "晚上：晚上： 秋葉原，動漫愛好者的天堂，也是買電器的好地方，還有女僕咖啡這樣的日本特色。",
-            morning_img: "湘南海岸.jpg",
-            afternoon_img: "鶴岡八幡宮.jpg",
-            night_img: "秋葉原.jpeg", 
-            morning_text_2: "早上：湘南海岸",
-            morning_text_3: "可在搭乘JR橫須賀線前往",
-            afternoon_text_2: "下午：鶴岡八幡宮",
-            afternoon_text_3: "可搭乘JR橫須賀線步行前往",
-            night_text_2: "晚上： 秋葉原",
-            night_text_3: "可搭乘JR橫須賀線前往",
+            name: "河口湖",
+            img: "河口湖.jpg",
           },
           {
             city: "東京",
             type: "自然",
             name: "上野公園",
             img: "上野公園.jpg",
-            morning_text_1: "上野公園。保留了江戶時代以來的日本園林風情，很有日本味道和文化內涵的公園，著名賞櫻地。",
+            morning_text: "上野公園。保留了江戶時代以來的日本園林風情，很有日本味道和文化內涵的公園，著名賞櫻地。",
             afternoon_text: "東京鐵塔。日本的地標建築，站在塔頂可以俯瞰東京全市，夜景更是迷人。",
             night_text: "銀座。遍布著高檔的購物中心，各種品牌和餐廳，也是文化藝術的據點，擁有豐富的劇院、畫廊和音樂廳。",
             morning_img: "上野公園.jpg",
             afternoon_img: "東京鐵塔.jpg",
             night_img: "銀座.jpeg", 
-            morning_text_2: "早上：上野公園",
-            morning_text_3: "可搭乘銀座線與日比谷線的上野站或 JR 山手線的鶯谷前往",
-            afternoon_text_2: "下午：東京鐵塔",
-            afternoon_text_3: "可搭乘都營大江戶線至赤羽橋站或日比谷線至神谷町站前往",
-            night_text_2: "晚上：銀座",
-            night_text_3: "可搭乘有樂町線銀座一丁目站或日比谷線銀座前往",
           },
           {
             city: "東京",
             type: "休閒",
             name: "澀谷",
             img: "澀谷.jpeg",
-            morning_text_1: "早上：淺草寺，東京最著名、最古老的寺廟，周圍有雷門、五重塔等古蹟，還可以逛仲見世商店街，寺內可以求籤。",
-            afternoon_text: "下午：新宿，這個區域有許多知名的地標和景點，包括新宿御苑，這是一個美麗的皇家花園，供人們休閒散步和欣賞自然美景。此外，新宿還擁有歌舞伎町，這是東京最著名的娛樂區之一，擁有眾多的酒吧、夜店、劇場和娛樂場所，為遊客提供了豐富多彩的夜生活體驗。",
-            night_text: "晚上：澀谷，被視為代表東京之時尚潮流基地，洋溢著懷舊氛圍的景觀還會在不經意間映入眼簾，澀谷的觀光景點不僅限於地面，可以前往——「澀谷SKY」可以俯瞰整個東京市景。",
-            morning_img: "淺草寺.jpg",
-            afternoon_img: "新宿女僕.jpeg",
-            night_img: "澀谷.jpeg", 
-            morning_text_2: "早上：淺草寺",
-            morning_text_3: "可搭乘東京Metro銀座線前往",
-            afternoon_text_2: "下午：新宿",
-            afternoon_text_3: "可搭乘都營新宿線前往",
-            night_text_2: "晚上：澀谷",
-            night_text_3: "可搭乘JR山手線前往",
+            morning_text: "上野公園。保留了江戶時代以來的日本園林風情，很有日本味道和文化內涵的公園，著名賞櫻地。",
+            afternoon_text: "東京鐵塔。日本的地標建築，站在塔頂可以俯瞰東京全市，夜景更是迷人。",
+            night_text: "銀座。遍布著高檔的購物中心，各種品牌和餐廳，也是文化藝術的據點，擁有豐富的劇院、畫廊和音樂廳。",
+            morning_img: "上野公園.jpg",
+            afternoon_img: "東京鐵塔.jpg",
+            night_img: "銀座.jpeg",
           },
           {
             city: "大阪",
@@ -411,6 +366,11 @@
           {
             city: "大阪",
             type: "自然",
+            img: "鶴岡八幡宮.jpg",
+          },
+          {
+            city: "大阪",
+            type: "自然",
             name: "湘南海岸",
             img: "湘南海岸.jpg",
           },
@@ -421,8 +381,8 @@
             img: "大阪海洋館.jpeg",
           },
         ];
-
-        filteredData.forEach((item) => {
+        
+          filteredData.forEach((item) => {
           if (city == item.city && type == item.type) {
             const div = document.createElement("div");
             div.className = "result-item";
