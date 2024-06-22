@@ -10,7 +10,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        height: 100vh; 
+        height: 100vh; /* 使body的高度等於視窗的高度 */
         background-color: #E9D3BB;
       }
 
@@ -34,7 +34,7 @@
         height: auto;
         /* padding-left: 200px; */
         margin-top: 100px;
-        margin-bottom: 50px;
+        margin-bottom: 50px; /* 調整為適合的值 */
       }
       .buttonsContainer {
         display: flex;
@@ -108,13 +108,16 @@
       <h1 style="text-align: start; margin-bottom: 85px;">國家</h1>
       <div class="buttonsContainer">
         <div class="country-button" onclick="selectCountry('日本')">日本</div>
-        <div class="country-button" onclick="selectCountry('韓國')">韓國</div>
-        <div class="country-button" onclick="selectCountry('泰國')">泰國</div>
+        <div class="country-button" onclick="alert('請點其他按鈕')">韓國</div>
+        <div class="country-button" onclick="alert('請點其他按鈕')">泰國</div>
       </div>
       <div class="buttonsContainer" style="margin-top: 75px;">
-        <div class="country-button" onclick="selectCountry('美國')">美國</div>
-        <div class="country-button" onclick="selectCountry('義大利')">義大利</div>
-        <div class="country-button" onclick="selectCountry('法國')">法國</div>
+        <div class="country-button" onclick="alert('請點其他按鈕')">美國</div>
+        <div class="country-button" onclick="alert('請點其他按鈕')">義大利</div>
+        <div class="country-button" onclick="alert('請點其他按鈕')">法國</div>
+      </div>
+      <div class="buttonsContainer" style="margin-top: 75px;">
+        <div class="country-button" onclick="selectCountry('美食')">美食</div>
       </div>
     </div>
 
@@ -133,7 +136,7 @@
               <!-- <option value=""></option> -->
               <option value="東京">東京</option>
               <option value="大阪">大阪</option>
-              <!-- 城市選項由 JavaScript 動態生成 -->
+              <!-- 城市選項將由 JavaScript 動態生成 -->
             </select>
           </div>
           <div class="dropdown">
@@ -147,12 +150,12 @@
           </div>
         </div>
         <div style="display: flex; margin-left: 80px; margin-left: auto; margin-right: 50px; column-gap: 50px;">
-          <button style="font-size: larger; width: 150px; background-color: #cfcfcf; color: black; width: 50px; height:39px; font-size: 13px;" class="button" onclick="search()">
+          <button style="font-size: larger; width: 150px; background-color: #CE7A4F; color: white; width: 50px; height:39px; font-size: 13px;" class="button" onclick="search()">
             搜尋
           </button>
   
           <button
-            style="font-size: medium; width: 150px; background-color: #cfcfcf; color: black; width: 50px; height:39px; font-size: 13px;"
+            style="font-size: medium; width: 150px; background-color: #CE7A4F; color: white; width: 50px; height:39px; font-size: 13px;"
             class="country-button"
             onclick="previousPage()"
           >
@@ -165,7 +168,6 @@
     </div>
     <div id="page4" class="container hidden" style="text-align: start; padding-top: 200px;">
       <h1>規劃路線：</h1>
-      <h3 id="locationTitle"></h3>
       <p id="morningText">早上：</p>
       <p id="afternoonText">下午：</p>
       <p id="nightText">晚上：</p>
@@ -191,7 +193,26 @@
       <p id="nightMovingText"></p>
       <p id="nightMovingContent"></p>
       <h1 id="tipTitle"></h1>
-      <p id="tipText"></p>
+      <ol>
+        <li d="tipText1"></li>
+        <li d="tipText2"></li>
+        <li d="tipText3"></li>
+      </ol>
+      <h1 id="locationTitle"></h1>
+      <ol>
+        <li d="locationText1"></li>
+        <li d="locationText2"></li>
+        <li d="locationText3"></li>
+      </ol>
+      <div style="display: flex; justify-content: center;">
+        <button
+          style="margin: 30px 0px; font-size: medium; width: 150px; background-color: #CE7A4F; color: white; width: 50px; height:39px; font-size: 13px;"
+          class="country-button"
+          onclick="goToPreviousPage()"
+        >
+          上一頁
+        </button>
+      </div>
     </div>
 
     <script>
@@ -199,8 +220,10 @@
         日本: ["東京", "大阪"],
       };
       function goToPreviousPage() {
-        document.getElementById("page3").classList.add("hidden");
+        document.getElementById("page4").classList.add("hidden");
         document.getElementById("page2").classList.remove("hidden");
+        const results = document.getElementById("results");
+        results.innerHTML = "";
       }
 
       function goToPage2() {
@@ -282,7 +305,7 @@
             city: "東京",
             type: "休閒",
             name: "秋葉原",
-            img: "秋葉原.jpg",
+            img: "秋葉原.jpeg",
             morning_text_1: "湘南海岸，在江之島海岸線，漫步感受湘南海岸的風情，再到達鐮倉高校前，拍一組《灌籃高手》同款，再體驗乘坐江之電（連接藤澤至鐮倉的路面電車行經路線含括了鐮倉大部分的著名景點）。",
             afternoon_text: "鶴岡八幡宮，日本三大八幡宮之一，這裡也以欣賞自然美景著稱，出宮門的小町街道路兩側分布著鱗次櫛比的店鋪。",
             night_text: "秋葉原，動漫愛好者的天堂，也是買電器的好地方，還有女僕咖啡這樣的日本特色。",
@@ -392,103 +415,47 @@
             night_text_3: "可搭乘有樂町線銀座一丁目站或日比谷線銀座前往",
             tip_text: '上野公園是東京市內最大的公園之一，擁有豐富的自然景觀和文化設施。但是，在第二次世界大戰期間，上野公園曾經被用作農業生產的場地。這是因為當時的日本政府為了確保城市居民的糧食供應，在城市內的一些公園和空地上進行了農耕和農產品種植，上野公園就是其中之一。'
           },
-         {
-            city: "東京",
-            type: "歷史",
-            name: "鶴岡八幡宮",
-            img: "鶴岡八幡宮.jpg",
-            morning_text_1: "早上：湘南海岸，在江之島海岸線，漫步感受湘南海岸的風情，再到達鐮倉高校前，拍一組《灌籃高手》同款，再體驗乘坐江之電（連接藤澤至鐮倉的路面電車行經路線含括了鐮倉大部分的著名景點）。",
-            afternoon_text: "下午：鶴岡八幡宮，日本三大八幡宮之一，這裡也以欣賞自然美景著稱，出宮門的小町街道路兩側分布著鱗次櫛比的店鋪。",
-            night_text: "晚上：晚上： 秋葉原，動漫愛好者的天堂，也是買電器的好地方，還有女僕咖啡這樣的日本特色。",
-            morning_img: "湘南海岸.jpg",
-            afternoon_img: "鶴岡八幡宮.jpg",
-            night_img: "秋葉原.jpeg", 
-            morning_text_2: "早上：湘南海岸",
-            morning_text_3: "可在搭乘JR橫須賀線前往",
-            afternoon_text_2: "下午：鶴岡八幡宮",
-            afternoon_text_3: "可搭乘JR橫須賀線步行前往",
-            night_text_2: "晚上： 秋葉原",
-            night_text_3: "可搭乘JR橫須賀線前往",
-            tip_text:"神社最初位于镰仓的由比滨，但在源赖朝的指示下迁移到了现在的位置，并于1191年重建。这次迁移和重建象征着镰仓作为新政治中心的确立。"
+          {
+            city: "大阪",
+            type: "自然",
+            name: "湘南海岸",
+            img: "湘南海岸.jpg",
           },
           {
             city: "大阪",
             type: "自然",
             name: "大阪城公園",
             img: "大阪城公園.jpg",
-            morning_text_1: "早上：大阪城公園，大阪地標，天守閣里有日本國寶。",
-            afternoon_text: "心齋橋，大阪最大的商業區，吃喝玩樂應有盡有。",
-            night_text: "通天閣，名偵探柯南取景地，可俯覽整個大阪。",
-            morning_img: "大阪城公園.jpg",
-            afternoon_img: "心齋橋.jpg",
-            night_img: "通天閣.jpeg", 
-            morning_text_2: "早上：大阪城公園",
-            morning_text_3: "可在搭乘JR環狀線前往",
-            afternoon_text_2: "下午：心齋橋",
-            afternoon_text_3: "可搭乘JR環狀線前往",
-            night_text_2: "晚上： 通天閣",
-            night_text_3: "可搭乘JR 環狀線前往新今宮車站前往",
-            tip_text: '大阪城的石墙最高可达30米，是日本城堡中最高的石墙之一。这些石块来自全国各地，每一块都巨大且精心拼接。'
+          },
+          {
+            city: "大阪",
+            type: "歷史",
+            name: "鶴岡八幡宮",
+            img: "鶴岡八幡宮.jpg",
           },
           {
             city: "大阪",
             type: "歷史",
             name: "通天閣",
             img: "通天閣.jpg",
-            morning_text_1: "早上：大阪城公園，大阪地標，天守閣里有日本國寶。",
-            afternoon_text: "心齋橋，大阪最大的商業區，吃喝玩樂應有盡有。",
-            night_text: "通天閣，名偵探柯南取景地，可俯覽整個大阪。",
-            morning_img: "大阪城公園.jpg",
-            afternoon_img: "心齋橋.jpg",
-            night_img: "通天閣.jpeg", 
-            morning_text_2: "早上：大阪城公園",
-            morning_text_3: "可在搭乘JR環狀線前往",
-            afternoon_text_2: "下午：心齋橋",
-            afternoon_text_3: "可搭乘JR環狀線前往",
-            night_text_2: "晚上： 通天閣",
-            night_text_3: "可搭乘JR 環狀線前往新今宮車站前往",
-            tip_text: '通天阁的夜间照明非常有特色，每个月都会根据季节和节日更换灯光颜色，成为大阪夜景中的一大亮点。'
           },
           {
             city: "大阪",
             type: "休閒",
             name: "環球影城",
             img: "大阪環球影城.jpg",
-            morning_text_1: "、中午、晚上：環球影城，好評如潮，相比於其他環球影城，加入了很多本土元素。",
-            morning_img: "大阪環球影城.jpeg",
-            morning_text_2: "早上：、中午、晚上：",
-            morning_text_3: "環球影城：搭乘 JR 西日本櫻島線沿線前往",
-            tip_text: '哈利·波特的魔法世界（The Wizarding World of Harry Potter）於2014年在大阪環球影城開幕。這裡重現了霍格華茲城堡和霍格莫德村，吸引了大量哈利·波特迷前來參觀。'
           },
           {
             city: "大阪",
             type: "休閒",
             name: "心齋橋",
             img: "心齋橋.jpeg",
-            morning_text_1: "早上：大阪城公園，大阪地標，天守閣里有日本國寶。",
-            afternoon_text: "心齋橋，大阪最大的商業區，吃喝玩樂應有盡有。",
-            night_text: "通天閣，名偵探柯南取景地，可俯覽整個大阪。",
-            morning_img: "大阪城公園.jpg",
-            afternoon_img: "心齋橋.jpg",
-            night_img: "通天閣.jpeg", 
-            morning_text_2: "早上：大阪城公園",
-            morning_text_3: "可在搭乘JR環狀線前往",
-            afternoon_text_2: "下午：心齋橋",
-            afternoon_text_3: "可搭乘JR環狀線前往",
-            night_text_2: "晚上： 通天閣",
-            night_text_3: "可搭乘JR 環狀線前往新今宮車站前往",
-            tip_text: '大阪城的石墙最高可达30米，是日本城堡中最高的石墙之一。这些石块来自全国各地，每一块都巨大且精心拼接。'
           },
           {
             city: "大阪",
             type: "休閒",
             name: "大阪海洋館",
             img: "大阪海洋館.jpeg",
-            morning_text_1: "、中午、晚上：大阪海洋館：日本最高規格海洋館，可以看到鯨鯊。",
-            morning_img: "大阪海洋館.jpeg",
-            morning_text_2: "早上：、中午、晚上：",
-            morning_text_3: "大阪海洋館：從新幹線的新大阪站換乘電車",
-            tip_text: '大阪海洋館（海遊館）的建築設計靈感來自日本傳統的八景圖，以八角形的建築布局展示了不同的海洋生態系統。這個設計不僅美觀，還有效地利用了空間。'
           },
         ];
 
@@ -515,7 +482,12 @@
               document.getElementById("nightMovingContent").textContent+=  item.night_text_3;
               document.getElementById("locationTitle").textContent+=  `${item.city} 美食指南`;
               document.getElementById("tipTitle").textContent+=  `${item.city} 冷知識`;
-              document.getElementById("tipText").textContent+=  item.tip_text;
+              document.getElementById("tipText1").textContent+=  item.tip_text_1;
+              document.getElementById("tipText2").textContent+=  item.tip_text_2;
+              document.getElementById("tipText3").textContent+=  item.tip_text_3;
+              document.getElementById("locationText1").textContent+=  item.tip_text_1;
+              document.getElementById("locationText2").textContent+=  item.tip_text_2;
+              document.getElementById("locationText3").textContent+=  item.tip_text_3;
             };
           }
         });
